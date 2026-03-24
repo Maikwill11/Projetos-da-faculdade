@@ -1,0 +1,249 @@
+<!DOCTYPE html> <!-- Declaração do tipo de documento HTML-->
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8"> <!-- Define a codificação de caracteres para UTF-8 -->
+    <title>Dellcon.com.br</title>
+    <link rel="stylesheet" href="styles/style.css"> <!-- Link para o arquivo de estilo CSS externo -->
+    <style> /* Estilos CSS para a página, style abre */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0; 
+            padding: 0; 
+            background: #f4f4f4; 
+            color: #333; 
+        }
+
+        header {
+            background: #6434b0; 
+            color: white; 
+            padding: 15px; 
+            text-align: center; 
+        }
+
+        nav {
+            background: #333;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav a, nav button {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        nav a:hover, nav button:hover {
+            color: #4CAF50;
+            background: #ffffff;
+            color: #000000;
+        }
+
+        main {
+            padding: 20px;
+            text-align: center;
+        }
+
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 400px;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+
+        #Produtos { 
+            margin-top: 20px;
+            display: none; 
+        } <!-- Este é um comentário -->
+
+        table {
+            margin: auto;
+            border-collapse: collapse;
+            width: 80%;
+        }
+
+        th, td {
+            border: 1px solid #333;
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background: #6434b0;
+            color: white;
+        }
+
+        /* Estilo para modais */
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 1000; 
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%; 
+            background-color: rgba(0,0,0,0.6); 
+        }
+
+        .modal-content {
+            background-color: #fff;
+            margin: 15% auto; 
+            padding: 20px;
+            border-radius: 8px;
+            width: 60%;
+            max-width: 500px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .close {
+            color: #333;
+            float: right;
+            font-size: 22px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Bem vindo a Dellcon</h1>
+        <p>Desconto de até 50% em todos os produtos!</p>
+    </header>
+
+    <nav>
+        <button onclick="abrirModal('contatoModal')">Contato</button>
+        <button onclick="abrirModal('missaoModal')">Missão</button>
+        <button onclick="abrirModal('visaoModal')">Visão</button>
+
+        <button onclick="atualizarPagina()">Atualizar Página</button>
+        <button onclick="Produtos()">Produtos</button>
+        <button onclick="showPromoAlert()">Ver Promoção</button>
+    </nav>
+
+    <main>
+        <div id="Produtos">
+            <table>
+                <tr>
+                    <th>Produto</th>
+                    <th>Descrição</th>
+                    <th>Preço</th>
+                    <th>Estoque</th>
+                </tr>
+                <tr>
+                    <td>Tinta azul 18L</td>
+                    <td>Tinta de alta qualidade para uso interno e externo</td>
+                    <td>R$ 100,00</td>
+                    <td>11</td>
+                </tr>
+                <tr>
+                    <td>Tinta branca 18L</td>
+                    <td>Tinta branca de alta qualidade para uso interno</td>
+                    <td>R$ 80,00</td>
+                    <td>25</td>
+                </tr>
+                <tr>
+                    <td>Tinta verde 18L</td>
+                    <td>Tinta verde de alta qualidade para uso interno</td>
+                    <td>R$ 150,00</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td>Tinta vermelha 18L</td>
+                    <td>Tinta vermelha de alta qualidade para uso interno</td>
+                    <td>R$ 120,00</td>
+                    <td>5</td>
+                </tr> 
+                <tr>
+                    <td>Tinta amarela 18L</td>
+                    <td>Tinta amarela de alta qualidade para uso interno</td>
+                    <td>R$ 90,00</td>
+                    <td>8</td>
+                </tr>
+            </table>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; Nenhum direito reservado ;(</p>
+    </footer>
+
+    <!-- Modais -->
+    <div id="contatoModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="fecharModal('contatoModal')">&times;</span>
+            <h2>Contato</h2>
+            <p>Entre em contato conosco pelo email: <strong>maik@will.com</strong></p>
+        </div>
+    </div>
+
+    <div id="missaoModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="fecharModal('missaoModal')">&times;</span>
+            <h2>Missão</h2>
+            <p>Nossa missão é oferecer produtos de qualidade com preços acessíveis, garantindo a satisfação dos clientes.</p>
+        </div>
+    </div>
+
+    <div id="visaoModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="fecharModal('visaoModal')">&times;</span>
+            <h2>Visão</h2>
+            <p>Nossa visão é ser referência nacional em vendas online, reconhecida pela confiança e inovação.</p>
+        </div>
+    </div>
+
+    <script>
+        function atualizarPagina() {
+            location.reload();
+        }
+
+        function Produtos() {
+            document.getElementById("Produtos").style.display = "block";
+        }
+
+        function showPromoAlert() {
+            alert("Aproveite a promoção de até 50% em todos os produtos! Não perca essa oportunidade única!");
+        }
+
+        function abrirModal(id) {
+            document.getElementById(id).style.display = "block";
+        }
+
+        function fecharModal(id) {
+            document.getElementById(id).style.display = "none";
+        }
+
+        // Fecha modal clicando fora da caixa
+        window.onclick = function(event) {
+            let modais = document.getElementsByClassName("modal");
+            for (let i = 0; i < modais.length; i++) {
+                if (event.target == modais[i]) {
+                    modais[i].style.display = "none";
+                }
+            }
+        }
+    </script>
+<img src="https://copilot.microsoft.com/th/id/BCO.ecf05f89-3d3d-4d91-870e-6dae4d2d008a.png" alt="Balde de tinta roxa Dellcon" />
+</body>
+</html>

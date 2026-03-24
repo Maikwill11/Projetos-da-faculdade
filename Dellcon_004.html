@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dellcon.com.br</title>
+    
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: url('https://images.unsplash.com/photo-1553356084-58ef4a67b2a7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1974&q=80') /* Foto gerata por ia Grook*/
+                        no-repeat center center fixed;
+            background-size: cover;
+            color: #222;
+            position: relative;
+            transition: background 0.8s ease;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background: rgba(255, 255, 255, 0.78);
+            z-index: -1;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 200;
+            left: 0; top: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.65);
+        }
+        .modal-content {
+            background: white;
+            margin: 8% auto;
+            padding: 30px;
+            width: 90%;
+            max-width: 600px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+        }
+
+        header { background: linear-gradient(135deg, #6434b0 0%, #7e57c2 100%); color: white; padding: 40px 20px; text-align: center; box-shadow: 0 6px 12px rgba(0,0,0,0.3); }
+        header h1 { margin: 0; font-size: 3.2rem; text-shadow: 3px 3px 8px rgba(0,0,0,0.5); }
+        header p { font-size: 1.4rem; margin: 12px 0 0; }
+
+        nav {
+            background: rgba(51,51,51,0.92);
+            padding: 16px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        nav button {
+            background: #6434b0;
+            color: white;
+            border: none;
+            padding: 12px 18px;
+            margin: 6px 8px;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        nav button:hover { background: #7e57c2; transform: translateY(-3px); }
+
+        main { padding: 40px 20px; max-width: 1100px; margin: 0 auto; }
+
+        .destaque { font-family: 'Georgia', serif; font-size: 1.25rem; line-height: 1.8; background: rgba(255,255,240,0.75); padding: 28px; border-left: 6px solid #6434b0; border-radius: 0 12px 12px 0; margin: 30px 0; }
+
+        #textoEditavel {
+            font-size: 1.3rem;
+            font-style: italic;
+            color: #444;
+            background: rgba(255,255,255,0.6);
+            padding: 20px;
+            border-radius: 12px;
+            margin: 30px auto;
+            max-width: 800px;
+            text-align: center;
+        }
+
+        table { margin: 30px auto; width: 90%; max-width: 900px; border-collapse: collapse; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+        th, td { padding: 14px; text-align: left; border-bottom: 1px solid #ddd; }
+        th { background: #6434b0; color: white; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Bem-vindo à Dellcon</h1>
+        <p>Desconto de até <strong>50%</strong> em todos os produtos!</p>
+    </header>
+
+    <nav>
+        <button onclick="abrirModal('contatoModal')">Contato</button>
+        <button onclick="abrirModal('missaoModal')">Missão</button>
+        <button onclick="abrirModal('visaoModal')">Visão</button>
+        <button onclick="atualizarPagina()">Atualizar Página</button>
+        <button onclick="Produtos()">Produtos</button>
+        <button onclick="showPromoAlert()">Ver Promoção</button>
+        <button onclick="mensagemBoasVindas()">Boas-vindas</button>
+        <button onclick="trocarTexto()">Trocar Texto</button>
+        <button onclick="mudarCor()">Mudar Cor Fundo</button>
+    </nav>
+<!--<Div significa divisão É um contêiner genérico (caixa) para agrupar conteúdo.-->
+    <main>
+        <div class="destaque">
+            A Dellcon traz até você as melhores tintas do mercado com preço imbatível e qualidade comprovada. 
+            Pinte sua casa, seu comércio ou seu projeto com a certeza de um acabamento perfeito e duradouro.
+        </div>
+
+        <p id="textoEditavel">
+            Texto original da página. Clique no botão "Trocar Texto" para alterá-lo!
+        </p>
+        <!--Imagem gerado por ia Copilot-->
+        <img src="https://copilot.microsoft.com/th/id/BCO.ecf05f89-3d3d-4d91-870e-6dae4d2d008a.png" 
+             alt="Balde de tinta roxa Dellcon" class="produto-img">
+
+        <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe> <!--Não consigo mostar o vídeo corretamente, boa música-->
+        </div>
+
+        <div id="Produtos" style="display:none;">
+            <table>
+                <tr><th>Produto</th><th>Descrição</th><th>Preço</th><th>Estoque</th></tr>
+                <tr><td>Tinta azul 18L</td><td>Tinta de alta qualidade para uso interno e externo</td><td>R$ 100,00</td><td>11</td></tr>
+                <tr><td>Tinta branca 18L</td><td>Tinta branca de alta qualidade para uso interno</td><td>R$ 80,00</td><td>25</td></tr>
+                <tr><td>Tinta verde 18L</td><td>Tinta verde de alta qualidade para uso interno</td><td>R$ 150,00</td><td>0</td></tr>
+                <tr><td>Tinta vermelha 18L</td><td>Tinta vermelha de alta qualidade para uso interno</td><td>R$ 120,00</td><td>5</td></tr>
+                <tr><td>Tinta amarela 18L</td><td>Tinta amarela de alta qualidade para uso interno</td><td>R$ 90,00</td><td>8</td></tr>
+            </table>
+        </div>
+    </main>
+
+    <footer><p>© 2025 Dellcon - Nenhum direito reservado ;(</p></footer>
+<!--Span É um contêiner inline dentro da linha.-->
+    <!-- Missão e Visão da empresa -->
+    <div id="missaoModal" class="modal"><div class="modal-content">
+        <span onclick="fecharModal('missaoModal')" style="float:right;font-size:28px;cursor:pointer;">&times;</span>
+        <h2>Missão</h2>
+        <p>Nossa missão é oferecer produtos de qualidade com preços acessíveis, garantindo a satisfação dos clientes.</p>
+    </div></div>
+
+    <div id="visaoModal" class="modal"><div class="modal-content">
+        <span onclick="fecharModal('visaoModal')" style="float:right;font-size:28px;cursor:pointer;">&times;</span>
+        <h2>Visão</h2>
+        <p>Nossa visão é ser referência nacional em vendas online, reconhecida pela confiança e inovação.</p>
+    </div></div>
+
+    <div id="contatoModal" class="modal"><div class="modal-content">
+        <span onclick="fecharModal('contatoModal')" style="float:right;font-size:28px;cursor:pointer;">&times;</span>
+        <h2>Contato</h2>
+        <p>📧 contato@dellcon.com.br<br>📞 (11) 99999-9999</p>
+    </div></div>
+
+    <script>
+        function atualizarPagina() { location.reload(); }
+        function Produtos() { document.getElementById("Produtos").style.display = "block"; }
+        function showPromoAlert() { alert("Aproveite a promoção de até 50% em todos os produtos!"); }
+        function abrirModal(id) { document.getElementById(id).style.display = "block"; }
+        function fecharModal(id) { document.getElementById(id).style.display = "none"; }
+
+        function mensagemBoasVindas() { alert("Seja muito bem-vindo à Dellcon!\nAproveite nossos descontos de até 50%!"); }
+        function trocarTexto() {
+            document.getElementById("textoEditavel").innerHTML = 
+                "Produtos de qualidade.";
+        }
+
+        //
+        function mudarCor() {
+            document.body.style.backgroundImage = "none";  // remover imagem
+            document.body.style.backgroundColor = "#3F1A6B";        
+        }
+
+        window.onclick = function(event) {
+            if (event.target.classList.contains("modal")) {
+                event.target.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Dellcon.com.br</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f4f4f4;
+      color: #333;
+      text-align: center;
+    }
+
+    header {
+      background: #4CAF50;
+      color: white;
+      padding: 15px;
+    }
+
+    nav {
+      background: #333;
+      padding: 10px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      color: #4CAF50;
+    }
+
+    button {
+      padding: 10px 15px;
+      margin: 10px;
+      border: none;
+      background: #4CAF50;
+      color: white;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    button:hover {
+      background: #45a049;
+    }
+
+    table {
+      margin: 20px auto;
+      border-collapse: collapse;
+      width: 60%;
+      background: white;
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 10px;
+    }
+
+    th {
+      background: #4CAF50;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>Welcome to Dellcon</h1>
+  <h2>Dellcon, doing great business!</h2>
+</header>
+
+<nav>
+  <a href="#">Produtos</a>
+  <a href="#">Sobre</a>
+  <a href="#">Contato</a>
+</nav>
+
+<br>
+
+<!-- BOTÕES -->
+<button onclick="atualizarPagina()">Atualizar Página</button>
+<button onclick="mostrarProdutos()">Mostrar Produtos</button>
+<button onclick="showPromoAlert()">Ver Promoção</button>
+<button onclick="estoqueVazio()">Verificar Estoque</button>
+
+<!-- TABELA (inicialmente escondida) -->
+<div id="tabelaProdutos" style="display:none;">
+  <table>
+    <tr>
+      <th>Produto</th>
+      <th>Preço</th>
+      <th>Estoque</th>
+    </tr>
+    <tr>
+      <td>Notebook</td>
+      <td>R$ 3.000,00</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>Mouse</td>
+      <td>R$ 80,00</td>
+      <td>25</td>
+    </tr>
+    <tr>
+      <td>Teclado</td>
+      <td>R$ 150,00</td>
+      <td>0</td>
+    </tr>
+  </table>
+</div>
+
+<script>
+  function atualizarPagina() {
+    location.reload();
+  }
+
+  function mostrarProdutos() {
+    document.getElementById("tabelaProdutos").style.display = "block";
+  }
+
+  function showPromoAlert() {
+    alert("Aproveite a promoção de 50% em todos os produtos!");
+  }
+
+  function estoqueVazio() {
+    alert("Alguns produtos estão com estoque vazio!");
+  }
+</script>
+
+</body>
+</html>
